@@ -10,7 +10,9 @@ class MainComponent extends Component{
 
     addUser = (user) => {
 
-        axios.get("https://api.github.com/users/user").then((response) => {
+        let userProfile = encodeURIComponent(user);
+
+        axios.get("https://api.github.com/users/" + userProfile).then((response) => {
 
             this.setState((prevState, props) => {
                 return {
@@ -22,14 +24,6 @@ class MainComponent extends Component{
             console.log("Reject :", reject)
         })
 
-
-        this.setState((prevState, props) => {
-            return {
-                users : prevState.users.concat([user])
-            }
-        });
-
-        console.log(this.state);
     }
 
     render(){
