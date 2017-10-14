@@ -2,21 +2,30 @@ import React, { Component } from "react";
 
 class AddCard extends Component {
 
+    state = {
+        userName: ""
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
-        let name = this.cardInput.value;
-
-
-
-        this.cardInput.value = "";
-
+        let name = this.state.userName;
         this.props.handleUser(name);
+
+        this.setState({
+            userName: ""
+        })
     }
 
     render(){
+        
+
         return(
             <form onSubmit={this.handleSubmit}>
-                <input ref={(input) => { this.cardInput = input }} />
+                <input onChange={ (event) => {
+                    this.setState({
+                        userName: event.target.value
+                    })
+                }}  value={ this.state.userName }/>
                 <input type="submit" value="Add"/> 
             </form>
         )
