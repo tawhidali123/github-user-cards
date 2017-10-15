@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addUser } from "Actions";
 
 class AddCard extends Component {
 
@@ -9,7 +11,7 @@ class AddCard extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         let name = this.state.userName;
-        this.props.handleUser(name);
+        this.props.dispatch(addUser(name));
 
         this.setState({
             userName: ""
@@ -32,4 +34,9 @@ class AddCard extends Component {
     }
 }
 
-export default AddCard;
+export default connect( (state) => {
+   
+    return {
+        users : state
+    }
+})(AddCard);

@@ -3,36 +3,24 @@ import CardList from "./cardList.jsx";
 import AddCard from "./addCard.jsx";
 import axios from "axios";
 
+import { Provider, connect } from "react-redux";
+import { config } from "ReduxStore";
+
+let store = config();
+
+console.log(store.getState())
+
 class MainComponent extends Component{
-    state = {
-        users : []
-    };
-
-    addUser = (user) => {
-
-        let userProfile = encodeURIComponent(user);
-
-        axios.get("https://api.github.com/users/" + userProfile).then((response) => {
-
-            this.setState((prevState, props) => {
-                return {
-                    users : prevState.users.concat([ response.data ])
-                }
-            })
-
-        }).catch((reject) => {
-            console.log("Reject :", reject)
-        })
-
-    }
 
     render(){
         
         return (
-            <div>
-                <AddCard handleUser={ this.addUser }></AddCard>
-                <CardList ></CardList>
-            </div>
+            <Provider store={ store }> 
+                <div>
+                    <AddCard></AddCard>
+                    <CardList ></CardList>
+                </div>
+            </Provider>
         )
     }
 }
