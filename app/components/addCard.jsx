@@ -1,6 +1,7 @@
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addUser } from "Actions";
+import { addUser, fetchUserData } from "Actions";
 
 class AddCard extends Component {
 
@@ -11,7 +12,7 @@ class AddCard extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         let name = this.state.userName;
-        this.props.dispatch(addUser(name));
+        this.props.dispatch(fetchUserData(name));
 
         this.setState({
             userName: ""
@@ -19,15 +20,17 @@ class AddCard extends Component {
     }
 
     render(){
+        let updateInputVal = (event) => {
+            this.setState({
+                userName: event.target.value
+            })
+        };
         
+        let { userName } = this.state;
 
         return(
             <form onSubmit={this.handleSubmit}>
-                <input onChange={ (event) => {
-                    this.setState({
-                        userName: event.target.value
-                    })
-                }}  value={ this.state.userName }/>
+                <input onChange={ updateInputVal }  value={ userName }/>
                 <input type="submit" value="Add"/> 
             </form>
         )
@@ -35,8 +38,7 @@ class AddCard extends Component {
 }
 
 export default connect( (state) => {
-   
     return {
-        users : state
+        users : state.foundUsers
     }
 })(AddCard);
