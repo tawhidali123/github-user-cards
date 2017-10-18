@@ -7,7 +7,6 @@ export let addUser = (user) => {
     }
 }
 
-
 export let fetchUserData = (name) => {
     let userProfile = encodeURIComponent(name);
     

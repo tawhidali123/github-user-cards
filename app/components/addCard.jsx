@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addUser, fetchUserData } from "Actions";
 
-class AddCard extends Component {
+export class AddCard extends Component {
 
     state = {
         userName: ""
