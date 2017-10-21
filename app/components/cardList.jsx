@@ -1,14 +1,31 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Card from "./card.jsx";
+
 
 class CardList extends Component{
     state = {};
 
     render(){
+        
+        let {gitProfiles, dispatch} = this.props;
+
+        let showUser = () => {
+           return gitProfiles.map((profile, index) => {
+                return  <Card key={index} { ...profile } ></Card>
+            })
+        }
+
         return (
-            <Card></Card>
+            <div className="cards-container">
+                { showUser() }
+            </div>
         )
     }
 }
 
-export default CardList;
+export default connect( (state) => {
+    return {
+        gitProfiles: state.foundUsers
+    }
+} )(CardList);

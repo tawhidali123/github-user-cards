@@ -29,10 +29,13 @@ export class AddCard extends Component {
         let { userName } = this.state;
 
         return(
-            <form onSubmit={this.handleSubmit}>
-                <input onChange={ updateInputVal }  value={ userName }/>
-                <input type="submit" value="Add"/> 
-            </form>
+            <div className="add-card">
+                <img className="github-img" src="assets/img/github.png"/>   
+                <form className="add-user-form"onSubmit={this.handleSubmit}>
+                    <input type="text" onChange={ updateInputVal }  value={ userName } placeholder="Search Github Profile" autoFocus/>
+                    <input type="submit" value="Add"/> 
+                </form>
+            </div>
         )
     }
 }

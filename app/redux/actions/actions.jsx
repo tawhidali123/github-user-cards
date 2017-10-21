@@ -9,12 +9,12 @@ export let addUser = (user) => {
 
 export let fetchUserData = (name) => {
     let userProfile = encodeURIComponent(name);
-    
     return (dispatch) => {
         axios.get("https://api.github.com/users/" + userProfile).then((response) => {
             dispatch(addUser(response.data));
         }).catch((err) => {
-            alert("USER NOT FOUND");
+            if(name === "") alert("Please Enter a User To Search");
+            else alert("USER NOT FOUND");
         })
     }
 }

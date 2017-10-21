@@ -11,7 +11,7 @@ let store = config();
 const MainComponent = (props) => {
     return (
         <Provider store={ store }> 
-            <div>
+            <div className="app">
                 <AddCard></AddCard>
                 <CardList ></CardList>
             </div>
