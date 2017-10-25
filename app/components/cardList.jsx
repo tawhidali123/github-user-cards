@@ -10,15 +10,21 @@ class CardList extends Component{
         
         let {gitProfiles, dispatch} = this.props;
 
-        let showUser = () => {
-           return gitProfiles.map((profile, index) => {
-                return  <Card key={index} { ...profile } ></Card>
-            })
+        let showUser = (profiles) => {
+            if(profiles && profiles.length){
+                return profiles.map((profile, index) => {
+                    return  <Card key={index} { ...profile } ></Card>
+                })
+            }else{
+                return <h1 style={{textAlign:"center"}}> Plese Search For a User </h1>
+            }
+
+
         }
 
         return (
             <div className="cards-list">
-                { showUser() }
+                { showUser(gitProfiles) }
             </div>
         )
     }

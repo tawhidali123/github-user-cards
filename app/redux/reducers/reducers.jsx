@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let storage = window.localStorage;
-let defaultState = JSON.parse(storage.getItem("users")); 
+let defaultState = JSON.parse(storage.getItem("users")) || [];
 
 export let usersReducer = (state = defaultState, action) => {
     switch(action.type){
@@ -16,7 +16,8 @@ export let usersReducer = (state = defaultState, action) => {
 
 
         case "REMOVE_USER" : 
-            console.log("user Romoved")
+            console.log("user Romoved");
+            return;
 
         default : 
             return state;
