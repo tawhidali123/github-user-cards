@@ -1,5 +1,5 @@
 import redux, { createStore, combineReducers, compose, applyMiddleware } from 'redux';
-import { addUserReducer} from "ReduxReducers";
+import { usersReducer} from "ReduxReducers";
 import logger from 'redux-logger';
 import thunk from "redux-thunk";
 
@@ -8,7 +8,7 @@ import thunk from "redux-thunk";
 export let config = () => {
     
     let reducers = combineReducers({
-        foundUsers: addUserReducer
+        foundUsers: usersReducer
     })
 
     let store = createStore( reducers, compose( 

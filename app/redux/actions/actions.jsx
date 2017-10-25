@@ -7,6 +7,13 @@ export let addUser = (user) => {
     }
 }
 
+export let removeUser = (user) => {
+    return {
+        type: "REMOVE_USER",
+        user
+    }
+}
+
 export let fetchUserData = (name) => {
     let userProfile = encodeURIComponent(name);
     return (dispatch) => {

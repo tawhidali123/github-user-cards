@@ -17,7 +17,7 @@ class CardList extends Component{
         }
 
         return (
-            <div className="cards-container">
+            <div className="cards-list">
                 { showUser() }
             </div>
         )
