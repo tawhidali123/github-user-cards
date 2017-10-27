@@ -17,11 +17,11 @@ class CardList extends Component{
             }
         }
 
-        let showGitList = (users) => {
+        let showGitList = (users, fn) => {
             if(users.length){
                 return(
                     <div className="cards-list">
-                        { showUser(users) }
+                        { fn(users) }
                      </div> 
                 )
             }else{
@@ -31,7 +31,7 @@ class CardList extends Component{
 
         return (
             <div>
-                { showGitList(gitProfiles) }
+                { showGitList(gitProfiles, showUser) }
             </div>
         )
     }
