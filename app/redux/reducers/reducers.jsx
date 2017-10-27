@@ -16,8 +16,11 @@ export let usersReducer = (state = defaultState, action) => {
 
 
         case "REMOVE_USER" : 
-            console.log("user Romoved");
-            return;
+            let newUsers = state.filter((user) => {
+                return user.id !== action.user.props.id
+            })
+            storage.setItem("users", JSON.stringify([...newUsers]));
+            return newUsers;
 
         default : 
             return state;

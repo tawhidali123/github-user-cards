@@ -15,16 +15,25 @@ class CardList extends Component{
                 return profiles.map((profile, index) => {
                     return  <Card key={index} { ...profile } ></Card>
                 })
-            }else{
-                return <h1 style={{textAlign:"center"}}> Plese Search For a User </h1>
             }
-
-
         }
 
+        let showGitList = (users) => {
+            if(users[0]){
+                return(
+                    <div className="cards-list">
+                        { showUser(users) }
+                     </div> 
+                )
+            }else{
+                return <h1 style={ { textAlign: "center" } }> Please Search For Users </h1>
+            }
+        }
+
+
         return (
-            <div className="cards-list">
-                { showUser(gitProfiles) }
+            <div>
+                { showGitList(gitProfiles) }
             </div>
         )
     }

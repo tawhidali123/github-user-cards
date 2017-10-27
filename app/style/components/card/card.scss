@@ -2,14 +2,15 @@
     padding: 15px;
     border: 3px solid #fff; 
     margin-bottom: 15px;
+    position: relative;
 
-    @media(min-width: 768px){
-        margin: 30px;
-    }
+    // @media(min-width: 768px){
+    //     margin: 0 30px;
+    // }
 
-    @media(min-width: 992px){
-        margin: 30px 60px;
-    }
+    // @media(min-width: 992px){
+    //     margin: 30px 60px;
+    // }
 }
 
 .user-details{
@@ -47,6 +48,39 @@
 
 .user-links{
 
+}
+
+.user-delete{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+
+    &:before{
+        content: "";
+        display: block;
+        width: 2px;
+        height: 15px;
+        background: #000;
+        transform: rotate(140deg);
+        position: absolute;
+        left: 7px;
+
+    }
+
+    &:after{
+        content: "";
+        display: block;
+        width: 2px;
+        height: 15px;
+        background: #000;
+        transform: rotate(220deg);
+        position: absolute;
+        right: 6px;
+    }
 }
 
 .btn{
